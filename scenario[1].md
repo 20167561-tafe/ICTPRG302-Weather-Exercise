@@ -19,10 +19,10 @@ will make testing your code tricky! See if you can think of some ways around thi
 problem.
 
 The features to be implemented are:
-1. Implement a mean calculation
-2. Implement a variance calculation
-3. Implement a standard deviation
-4. Implement a range calculation
+1. Implement a mean calculation (Chris)
+2. Implement a variance calculation (Chao)
+3. Implement a standard deviation (Faisal)
+4. Implement a range calculation (Duva)
 5. Implement an interquartile range calculation
 6. Extend the menu to collect a date range from the user (if desired)
 7. Extend the menu to collect a desired statistical calculation
