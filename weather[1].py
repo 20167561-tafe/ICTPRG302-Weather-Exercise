@@ -32,6 +32,13 @@ def standard_deviation(in_series):
     standard_deviation()== math.sqrt(variance())
     return standard_deviation
 
+def iqr(in_series):
+    df = pd.read_csv(file)
+    Q1 = df[series_titles].quantile(0.25)
+    Q3 = df[series_titles].quantile(0.75)
+    IQR = Q3 - Q1
+    print(f"IQR: {IQR}")
+
 def filter_series(year_series, month_series, day_series, data_series, max_date=None, min_date=None):
     pass
 
@@ -61,6 +68,7 @@ def menu(data_table):
     choice = get_user_choice(series_titles)
     series = data_table[choice]
     print(f"Mean: {mean(data_table[choice])}")
+    iqr(choice)
 
 if __name__ == "__main__":
     data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
