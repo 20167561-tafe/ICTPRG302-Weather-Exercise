@@ -1,3 +1,4 @@
+import math
 import pandas as pd
 file = "C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv"
 
@@ -13,7 +14,8 @@ def variance(in_series):
     pass
 
 def standard_deviation(in_series):
-    pass
+    standard_deviation()== math.sqrt(variance())
+    return standard_deviation
 
 def filter_series(year_series, month_series, day_series, data_series, max_date=None, min_date=None):
     pass
