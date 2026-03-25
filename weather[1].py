@@ -63,12 +63,19 @@ def get_user_choice(options):
     choice = int(choice) - 1
     return options[choice]
 
+def date_feature(options):
+    df = pd.read_csv(file)
+    df['datetime'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
+    print(df['datetime'])
+    
+
 def menu(data_table):
     print("Select a data series:")
     choice = get_user_choice(series_titles)
     series = data_table[choice]
     print(f"Mean: {mean(data_table[choice])}")
     iqr(choice)
+    date_feature(choice)
 
 if __name__ == "__main__":
     data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
