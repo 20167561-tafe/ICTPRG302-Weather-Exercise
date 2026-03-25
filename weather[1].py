@@ -68,7 +68,14 @@ def date_feature(options):
     df['datetime'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
     print(df['datetime'])
     
-
+def temperature_range(options):
+    df = pd.read_csv(file)
+    temp_range = df["Maximum temperature (Degree C)"] - df["Minimum temperature (Degree C)"]
+    temp_range.name = "Temperature Range (Degree C)"
+    print(temp_range)
+    return temp_range
+    
+ 
 def menu(data_table):
     print("Select a data series:")
     choice = get_user_choice(series_titles)
@@ -76,6 +83,7 @@ def menu(data_table):
     print(f"Mean: {mean(data_table[choice])}")
     iqr(choice)
     date_feature(choice)
+    temperature_range(choice)
 
 if __name__ == "__main__":
     data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
