@@ -1,10 +1,15 @@
+import math
+import pandas as pd
 import statistics
+file = "C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv"
 
 
 series_titles = ["Maximum temperature (Degree C)", "Minimum temperature (Degree C)", "Rainfall amount (millimetres)"]
 
 def mean(in_series):
-    pass
+    df = pd.read_csv(file)
+    mean_values = df[series_titles].mean()
+    return mean_values
 
 def variance(in_series):
     data = list(in_series)
@@ -24,7 +29,8 @@ def variance(in_series):
     return variance
 
 def standard_deviation(in_series):
-    pass
+    standard_deviation()== math.sqrt(variance())
+    return standard_deviation
 
 def filter_series(year_series, month_series, day_series, data_series, max_date=None, min_date=None):
     pass
@@ -57,5 +63,5 @@ def menu(data_table):
     print(f"Mean: {mean(data_table[choice])}")
 
 if __name__ == "__main__":
-    data = read_csv('weather.csv')
+    data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
     menu(data)
