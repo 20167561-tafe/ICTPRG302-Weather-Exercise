@@ -1,3 +1,5 @@
+import statistics
+
 
 series_titles = ["Maximum temperature (Degree C)", "Minimum temperature (Degree C)", "Rainfall amount (millimetres)"]
 
@@ -5,7 +7,21 @@ def mean(in_series):
     pass
 
 def variance(in_series):
-    pass
+    data = list(in_series)
+
+    if not data:
+        return none
+
+    for value in data:
+        if not isinstance(value, ( int , float)):
+            raise TypeError(f"non-numeric value found:{v}")
+
+    avg = mean(data)
+    squared_diffs = [(value -avg)**2 for value in data]
+
+    variance = sum(squared_diffs) / len(data)
+
+    return variance
 
 def standard_deviation(in_series):
     pass
