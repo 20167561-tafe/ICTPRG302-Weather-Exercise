@@ -2,7 +2,6 @@ import math
 import pandas as pd
 file = "C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv"
 
-
 series_titles = ["Maximum temperature (Degree C)", "Minimum temperature (Degree C)", "Rainfall amount (millimetres)"]
 
 def mean(in_series):
