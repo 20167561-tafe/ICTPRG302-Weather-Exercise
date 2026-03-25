@@ -28,6 +28,6 @@ The features to be implemented are:
 6. Extend the menu to collect a date range from the user (if desired) (Chao)
 7. Extend the menu to collect a desired statistical calculation (Faisal)
 8. Extend the menu to answer the user's questions until they choose to quit (Duva)
-9. Implement a date filter on the requested data series
+9. Implement a date filter on the requested data series (Chris)
 10. Add an another data series: temperature range. It should be calculated from max-min temperature.
 
