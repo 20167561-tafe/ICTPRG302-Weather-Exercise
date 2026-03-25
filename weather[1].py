@@ -1,5 +1,6 @@
 import math
 import pandas as pd
+import statistics
 file = "C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv"
 
 
@@ -11,7 +12,21 @@ def mean(in_series):
     return mean_values
 
 def variance(in_series):
-    pass
+    data = list(in_series)
+
+    if not data:
+        return none
+
+    for value in data:
+        if not isinstance(value, ( int , float)):
+            raise TypeError(f"non-numeric value found:{v}")
+
+    avg = mean(data)
+    squared_diffs = [(value -avg)**2 for value in data]
+
+    variance = sum(squared_diffs) / len(data)
+
+    return variance
 
 def standard_deviation(in_series):
     standard_deviation()== math.sqrt(variance())
