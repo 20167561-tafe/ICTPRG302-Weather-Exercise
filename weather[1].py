@@ -31,6 +31,11 @@ def variance(in_series):
     for value in data:
         if not isinstance(value, (int, float)):
             raise TypeError(f"non-numeric value found: {value}")
+        if not isinstance(value, ( int , float)):
+            raise TypeError(f"non-numeric value found:{value}")
+
+    avg = mean(data)
+    squared_diffs = [(value -avg)**2 for value in data]
 
     avg = sum(data) / len(data)
     squared_diffs = [(value - avg) ** 2 for value in data]
@@ -80,6 +85,50 @@ def get_user_choice(options):
     return options[choice]
 
 
+def show_menu():
+    """Displays the statistical calculation menu."""
+    print("\n--- Statistical Calculator ---")
+    print("mean")
+    print("variance")
+    print("standard_deviation")
+    print("Exit")
+
+
+def get_data():
+    """Collects user input data for calculation."""
+    data = input("Enter numbers separated by spaces: ")
+    return [float(x) for x in data.split()]
+
+
+def main():
+    while True:
+        show_menu()
+        choice = get_user_choice(series_titles)
+        
+        if choice == "Exit":
+            print("Exiting...")
+            break
+        
+        if choice in ["mean", "variance", "standard_deviation"]:
+            data = get_data()
+
+            if not data:
+                print("No data entered")
+                continue
+            
+            if choice == 'mean':
+                print(f"mean: {statistics.mean(data)}")
+            elif choice == 'variance':
+                print(f"variance: {statistics.variance(data)}")
+            elif choice == 'standard_deviation':
+                if len(data) < 2:
+                    print("standard_deviation requires at least two data points.")
+                else:
+                    print(f"standard_deviation: {statistics.stdev(data)}")
+        else:
+            print("Invalid choice, please try again.")
+   
+    
 def date_feature(options):
     df = pd.read_csv(file)
     df['datetime'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
@@ -201,3 +250,5 @@ def menu(data_table):
 if __name__ == "__main__":
     data = read_csv(file)
     menu(data)
+    data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
+    main(data)
