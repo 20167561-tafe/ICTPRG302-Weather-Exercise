@@ -248,7 +248,7 @@ def menu(data_table):
 
 # Select the date range
 date = data_table["Date"]
-data = fata_table[series_name]
+data = data_table[series_name]
 
 start = input("Enter the start date (YYYY/MM/DD):")
 end = input("Enter the end date (YYYY/MM/DD):")
