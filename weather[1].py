@@ -32,6 +32,13 @@ def standard_deviation(in_series):
     standard_deviation()== math.sqrt(variance())
     return standard_deviation
 
+def iqr(in_series):
+    df = pd.read_csv(file)
+    Q1 = df[series_titles].quantile(0.25)
+    Q3 = df[series_titles].quantile(0.75)
+    IQR = Q3 - Q1
+    print(f"IQR: {IQR}")
+
 def filter_series(year_series, month_series, day_series, data_series, max_date=None, min_date=None):
     pass
 
@@ -100,6 +107,27 @@ def main():
             print("Invalid choice, please try again.")
    
     
+def date_feature(options):
+    df = pd.read_csv(file)
+    df['datetime'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
+    print(df['datetime'])
+    
+def temperature_range(options):
+    df = pd.read_csv(file)
+    temp_range = df["Maximum temperature (Degree C)"] - df["Minimum temperature (Degree C)"]
+    temp_range.name = "Temperature Range (Degree C)"
+    print(temp_range)
+    return temp_range
+    
+ 
+def menu(data_table):
+    print("Select a data series:")
+    choice = get_user_choice(series_titles)
+    series = data_table[choice]
+    print(f"Mean: {mean(data_table[choice])}")
+    iqr(choice)
+    date_feature(choice)
+    temperature_range(choice)
 
 if __name__ == "__main__":
     data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
