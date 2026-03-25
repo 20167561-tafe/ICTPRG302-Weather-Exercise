@@ -246,6 +246,18 @@ def menu(data_table):
         if view_hist == 'yes':
             plot_monthly_min_max_histogram()
 
+# Select the date range
+date = data_table["Date"]
+data = fata_table[series_name]
+
+start = input("Enter the start date (YYYY/MM/DD):")
+end = input("Enter the end date (YYYY/MM/DD):")
+
+select_range = []
+for i in range(len(date)):
+    if start <= dates[i] <= end:
+        select_range.append (data[i])
+
 if __name__ == "__main__":
     # This part finds the file relative to the script location
     base_path = os.path.dirname(__file__)
