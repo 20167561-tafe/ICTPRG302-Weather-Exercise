@@ -62,6 +62,18 @@ def menu(data_table):
     series = data_table[choice]
     print(f"Mean: {mean(data_table[choice])}")
 
+# Select the date range
+date = data_table["Date"]
+data = fata_table[series_name]
+
+start = input("Enter the start date (YYYY/MM/DD):")
+end = input("Enter the end date (YYYY/MM/DD):")
+
+select_range = []
+for i in range(len(date)):
+    if start <= dates[i] <= end:
+        select_range.append (data[i])
+
 if __name__ == "__main__":
     data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
     menu(data)
