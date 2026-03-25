@@ -73,16 +73,14 @@ def read_csv(file, default_value=None):
 
 
 def get_user_choice(options):
+    print("\n--- Weather Analysis Menu ---")
     for i, option in enumerate(options):
         print(f"{i+1}. {option}")
-    choice = input("Enter the number of your choice: ")
-    if choice.lower() == 'exit':
-        return None
+    choice = input("Enter choice (or 'exit'): ").strip().lower()
+    if choice == 'exit': return None
     if not choice.isdigit() or int(choice) < 1 or int(choice) > len(options):
-        print("Invalid choice. Please try again.")
         return get_user_choice(options)
-    choice = int(choice) - 1
-    return options[choice]
+    return options[int(choice) - 1]
 
 
 def show_menu():
@@ -232,23 +230,27 @@ def plot_monthly_min_max_histogram():
 
 
 def menu(data_table):
-    print("\nSelect a data series:")
-    choice = get_user_choice(series_titles)
-    if choice is None:
-        return
-    print(f"Mean: {mean(data_table[choice])}")
-    iqr(choice)
-    date_feature(choice)
-    temperature_range(choice)
-
-    print("\nWould you like to view the monthly Min/Max temperature histogram?")
-    view_hist = input("Enter 'yes' to continue or any other key to skip: ").strip().lower()
-    if view_hist == 'yes':
-        plot_monthly_min_max_histogram()
-
+    while True:
+        print("\nSelect a data series:")
+        choice = get_user_choice(series_titles)
+        if choice is None: break
+        series = data_table[choice]
+        print(f"\n{'-'*20}\nRESULT: {choice}\nRange: {range_calculation(series)}\n{'-'*20}")
+        print(f"Mean: {mean(data_table[choice])}")
+        iqr(choice)
+        date_feature(choice)
+        temperature_range(choice)
+        
+        print("\nWould you like to view the monthly Min/Max temperature histogram?")
+        view_hist = input("Enter 'yes' to continue or any other key to skip: ").strip().lower()
+        if view_hist == 'yes':
+            plot_monthly_min_max_histogram()
 
 if __name__ == "__main__":
-    data = read_csv(file)
-    menu(data)
-    data = read_csv('C:/Users/Admin/Desktop/20167561-tafe.github.io/ICTPRG302-Weather-Exercise/weather[1].csv')
-    main(data)
+    # This part finds the file relative to the script location
+    base_path = os.path.dirname(__file__)
+    target_file = os.path.join(base_path, 'weather[1].csv')
+    
+    data = read_csv(target_file)
+    if data:
+        menu(data)
